@@ -12,29 +12,15 @@
     <a href="/spaces/new">create a space</a>
     <link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8">
     <ul id='space'>
-      <!-- <%= @space.each do |link| %>
-        <li>
-        <b> Title:</b> <%= space.name %><br>
-        <b> Description:</b>  <%= space.description   %><br>
-        <b> Price:</b> <%= space.price %>
-        </li>
-        <form method="get" action="/spaces/:name">
-            <button type="submit">Book</button>
-        </form>
-      <% end %> -->
+      <% @space.each do |space| %>
+    <li>
+      Name: <%= space.name %><br>
+      Description:   <%= space.description   %><br>
+      Price: <%= space.price %>
+    </li>
+      <input type="button" name="name" value="Book">
+  <% end %>
     </ul>
   </body>
 
 </html>
-
-
-  <!-- <h1> Links </h1>
-  <ul id='links'>
-    <% @links.each do |link| %>
-      <li>
-        Title: <%= link.title %>
-        URL:   <%= link.url   %>
-      </li>
-    <% end %>
-  </ul>
-  <input type="button" name="name" value=""> -->
