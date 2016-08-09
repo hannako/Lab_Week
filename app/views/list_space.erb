@@ -10,17 +10,15 @@
 
   <body>
     <a href="/spaces/new">create a space</a>
-    <link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8">
-    <ul id='space'>
+    <!-- <link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8"> -->
+    <dl id='space'>
       <% @space.each do |space| %>
-    <li>
-      Name: <%= space.name %><br>
-      Description:   <%= space.description   %><br>
-      Price: <%= space.price %>
-    </li>
+      <dt>Name: <%= space.name %><br>
+      <dd>Description:   <%= space.description   %><br>
+      <dd>Price: <%= space.price %><br>
       <input type="button" name="name" value="Book">
   <% end %>
-    </ul>
+    </dl>
   </body>
 
 </html>
