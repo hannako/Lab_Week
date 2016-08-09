@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
 
@@ -16,9 +18,16 @@ class AirBnB < Sinatra::Base
   end
 
   post "/users/new" do
-    user = User.create(username: params[:username], email: params[:email], password: params[:password], confirm_password: params[:confirm_password])
-    session[:user_id] = user.id
-    redirect '/users/spaces'
+    user = User.create(username: params[:username],
+    email: params[:email],
+    password: params[:password],
+    password_confirmation: params[:password_confirmation])
+    if user.save
+      session[:user_id] = user.id
+      redirect '/users/spaces'
+    else
+      erb :'/users/new'
+    end
   end
 
   get "/users/spaces" do
@@ -27,7 +36,7 @@ class AirBnB < Sinatra::Base
 
   helpers do
     def current_user
-      @current_user = User.get(session[:user_id])
+      @current_user ||= User.get(session[:user_id])
     end
   end
 
