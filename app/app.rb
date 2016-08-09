@@ -1,6 +1,11 @@
 require 'sinatra/base'
+require_relative 'data_mapper_setup'
+
 
 class AirBnB < Sinatra::Base
+
+  enable :sessions
+  set :session_secret, "Harry's Mum"
 
   get '/' do
     erb :'index'
@@ -10,7 +15,9 @@ class AirBnB < Sinatra::Base
     erb :'users/new'
   end
 
-  post "/session/new" do
+  post "/users/new" do
+    user = User.create(username: params[:username], email: params[:email], password: params[:password], confirm_password: params[:confirm_password])
+    session[:user_id] = user.id
     redirect '/users/spaces'
   end
 
@@ -18,6 +25,11 @@ class AirBnB < Sinatra::Base
     erb :'users/spaces'
   end
 
+  helpers do
+    def current_user
+      @current_user = User.get(session[:user_id])
+    end
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

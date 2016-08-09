@@ -1,17 +1,7 @@
 feature 'user sign_up' do
   scenario ' user can sign up' do
-    visit '/'
-    click_button 'sign_up'
-    # expect(page).to have_content('enter email')
-
-    fill_in :username,        with: 'user1'
-    fill_in :email,            with: 'user1@gmail.com'
-    fill_in :password,         with: 'password1'
-    fill_in :confirm_password, with: 'password1'
-
-    click_button 'add_user'
+    expect { sign_up }.to change(User, :count).by(1)
     expect(page).to have_content('Welcome, user1')
-
-
+    expect(User.first.username).to eq('user1')
   end
 end
