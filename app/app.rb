@@ -6,7 +6,11 @@ class AirBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    erb :list_spaces
+    erb :list_space
+  end
+
+  get '/spaces/new' do
+    erb :create_a_space
   end
 
   # start the server if ruby file executed directly
