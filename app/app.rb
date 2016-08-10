@@ -2,10 +2,12 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
+require 'sinatra/flash'
 
 
 class AirBnB < Sinatra::Base
 
+  register Sinatra::Flash
   enable :sessions
   set :session_secret, "Harry's Mum"
 
@@ -16,6 +18,22 @@ class AirBnB < Sinatra::Base
   get '/users/new' do
     erb :'users/new'
   end
+
+  get '/users/sign-in' do
+    erb :'users/sign-in'
+  end
+
+  post '/sessions' do
+    user = User.authenticate(params[:username], params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect '/users/spaces'
+    else
+      flash.now[:error] = 'Your login details are incorrect'
+      erb :'users/sign-in'
+    end
+  end
+
 
   post "/users/new" do
     user = User.create(username: params[:username],
