@@ -3,7 +3,6 @@
 
     # belongs_to :user
 
-    #has n, :bookings
 
     property :id, Serial
     property :name, String
@@ -11,4 +10,6 @@
     property :price, Integer
     #property :availability, Boolean
 
+    has n, :days
+    
   end

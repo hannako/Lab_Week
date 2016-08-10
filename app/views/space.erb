@@ -2,4 +2,9 @@
 <br>
 <%= @space_description %><br>
 <br>
-$<%= @space_price %>
+$<%= @space_price %><br>
+<br>
+<form action="/spaces/confirm-date" method="post">
+  <input type="text" name="date" placeholder="day/month/year">
+  <input type="submit" name="Reserve it!" value="Reserve it!">
+</form>

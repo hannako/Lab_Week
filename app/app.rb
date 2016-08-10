@@ -6,6 +6,7 @@ require_relative 'data_mapper_setup'
 
 class AirBnB < Sinatra::Base
   enable :sessions
+
   get '/' do
     'Hello AirBnB!'
   end
@@ -35,6 +36,14 @@ class AirBnB < Sinatra::Base
     erb :space
   end
 
+  post 'spaces/confirm-date' do
+    puts day_to_confirm = params[:date].split("/").join("") 
+    redirect 'spaces/requests' if Day.where(date: day_to_confirm).nil?
+  end
+
+  get 'spaces/requests' do
+    erb :requests
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

@@ -1,6 +1,7 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require_relative 'models/space'
+require_relative 'models/day'
 
 # require_relative 'models/eg'
 

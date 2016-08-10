@@ -8,6 +8,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
+require 'features/web_helpers'
 
 Capybara.app = AirBnB
 
@@ -29,7 +30,7 @@ RSpec.configure do |config|
  config.before(:each) do
    DatabaseCleaner.start
  end
- 
+
  config.after(:each) do
    DatabaseCleaner.clean
  end
