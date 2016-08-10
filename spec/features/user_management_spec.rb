@@ -25,26 +25,28 @@ feature 'user sign_in' do
   end
 
   scenario 'with corrent creds' do
-    visit '/'
-    click_button 'sign in'
-    fill_in :username, with: 'prashant1'
-    fill_in :password, with: 'secret1234'
-    click_button 'submit'
+    sign_in
     expect(page).to have_content 'Welcome, prashant1'
   end
 
   scenario 'with incorrect creds' do
-    visit '/'
-    click_button 'sign in'
-    fill_in :username, with: 'prashant1'
-    fill_in :password, with: 'secret5678'
-    click_button 'submit'
+    sign_in(password: 'secret5678')
     expect(page).to have_content 'Your login details are incorrect'
   end
+end
 
+feature 'User signs out' do
+  before(:each) do
+    User.create(email: 'user@example.com',
+                username: 'prashant1',
+                password: 'secret1234',
+                password_confirmation: 'secret1234')
+  end
 
-
-
-
-
+  scenario 'while being signed in' do
+    sign_in
+    click_button 'sign out'
+    expect(page).to have_content('goodbye!')
+    expect(page).not_to have_content('Welcome, prashant1')
+  end
 end

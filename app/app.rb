@@ -7,6 +7,7 @@ require 'sinatra/flash'
 
 class AirBnB < Sinatra::Base
 
+  use Rack::MethodOverride
   register Sinatra::Flash
   enable :sessions
   set :session_secret, "Harry's Mum"
@@ -46,6 +47,12 @@ class AirBnB < Sinatra::Base
     else
       erb :'/users/new'
     end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'goodbye!'
+    redirect '/'
   end
 
   get "/users/spaces" do
