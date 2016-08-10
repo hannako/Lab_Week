@@ -18,3 +18,12 @@ def sign_in(username: 'prashant1', password: 'secret1234')
   fill_in :password, with: password
   click_button 'submit'
 end
+
+def add_space
+  visit "/users/spaces"
+  click_link "create a space"
+  fill_in :name, with: "Nice Place"
+  fill_in :description, with: "Very nice place"
+  fill_in :price, with: "136.50"
+  click_button "Create"
+end

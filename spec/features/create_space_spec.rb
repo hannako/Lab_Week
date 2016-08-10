@@ -1,6 +1,6 @@
 feature "Creation of spaces" do
   scenario "creates a space" do
-    visit "/spaces"
+    sign_up
     click_link "create a space"
     fill_in :name, with: "Nice Place"
     fill_in :description, with: "Very nice place"

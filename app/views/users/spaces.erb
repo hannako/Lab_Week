@@ -1,8 +1,25 @@
-<!-- <form action="/" method="get" >
-  <input type="submit" value="sign out" >
-</form> -->
+<!DOCTYPE html>
+<html>
+  <h1> Available Rentals </h1>
+  <head>
 
 
-<!-- <body>
-  Welcome, <%= current_user.username %>
-</body> -->
+
+  </head>
+
+
+  <body>
+    <a href="/spaces/new">create a space</a>
+    <!-- <link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8"> -->
+    <dl id='space'>
+      <% @space.each do |space| %>
+          <dt>Name: <%= space.name %><br>
+          <dd>Description:   <%= space.description   %><br>
+          <dd>Price: <%= space.price %><br>
+          <!-- <input type="button" name="name" value="Book" > -->
+          <a href = "/spaces/<%= space.id %>" >Book</a>
+      <% end %>
+    </dl>
+  </body>
+
+</html>

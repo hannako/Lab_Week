@@ -58,6 +58,7 @@ class AirBnB < Sinatra::Base
   end
 
   get "/users/spaces" do
+    @space = Space.all
     erb :'users/spaces'
   end
 
@@ -65,11 +66,6 @@ class AirBnB < Sinatra::Base
     def current_user
       @current_user ||= User.get(session[:user_id])
     end
-  end
-
-  get '/spaces' do
-    @space = Space.all
-    erb :list_space
   end
 
   get '/spaces/new' do
@@ -81,7 +77,7 @@ class AirBnB < Sinatra::Base
       description: params[:description],
       price: params[:price])
     space.save
-    redirect '/spaces'
+    redirect '/users/spaces'
   end
 
   get "/spaces/:id" do
