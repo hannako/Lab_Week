@@ -27,6 +27,12 @@ class AirBnB < Sinatra::Base
     redirect '/spaces'
   end
 
+  get '/space/:id' do
+  space = Space.first(id: params[:id])
+
+  erb :'links/index'
+end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
