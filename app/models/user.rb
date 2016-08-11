@@ -3,18 +3,24 @@ require 'dm-validations'
 
 
 class User
+
   include DataMapper::Resource
+
+  # has n, :spaces, through: Resource
 
   attr_reader :password
   attr_accessor :password_confirmation
 
   validates_confirmation_of :password
 
+
+
   property :id, Serial
   property :username, String
   property :email, String, format: :email_address, required: true, unique: true
   property :password_digest, String, length: 70
   # property :password_confirmation, Text
+
 
   def password=(password)
     @password = password
@@ -29,5 +35,5 @@ class User
         nil
       end
   end
-  
+
 end

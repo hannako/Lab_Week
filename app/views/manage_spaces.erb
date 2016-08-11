@@ -1,1 +1,5 @@
+<% if current_user.spaces = nil %>
 You have 0 requests
+<%else%>
+You have the following booking requests: <%current_user.spaces current_user.booked_dates%>
+<%end%>
