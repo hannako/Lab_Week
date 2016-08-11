@@ -2,4 +2,13 @@
 <br>
 <%= @space_description %><br>
 <br>
-$<%= @space_price %>
+$<%= @space_price %><br>
+
+<form class="" action="space/request" method="post">
+
+<input type="text" name="day" placeholder="00">/
+<input type="text" name="month" placeholder="00">/
+<input type="text" name="year" placeholder="00"><br>
+<input type="submit" name="Request" value="Request">
+</form>
+<!-- <button type="button" name="Request to Book" value="Request to Book"></button> -->

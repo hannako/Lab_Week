@@ -60,6 +60,10 @@ class AirBnB < Sinatra::Base
 
   get "/users/spaces" do
     @space = Space.all
+    # if Request.instance != nil
+    #   @request = Request.instance
+    #   @request_string = @request.day + "/" + @request.month + "/" + @request.year
+    # end
     erb :'users/spaces'
   end
 
@@ -89,6 +93,16 @@ class AirBnB < Sinatra::Base
     erb :space
   end
 
+  post "/space/request" do
+    day = params[:day]
+    month = params[:month]
+    year = params[:year]
+    date = day + month + year
+    request = Date.new(date: date)
+    request.save
+    # Request.create(day, month, year)
+    redirect 'users/spaces'
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
