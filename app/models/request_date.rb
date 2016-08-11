@@ -1,15 +1,15 @@
 class Request_date
-  attr_reader :day, :month, :year
+  attr_reader :day, :month, :year, :name
 
-  def initialize(day, month, year)
+  def initialize(day, month, year, name)
     @day = day
     @month = month
     @year = year
-    # @space_name = space_name
+    @name = name
   end
 
-  def self.create(day, month, year)
-    @request_date = Request_date.new(day, month, year)
+  def self.create(day, month, year, name)
+    @request_date = Request_date.new(day, month, year, name)
   end
 
   def self.instance

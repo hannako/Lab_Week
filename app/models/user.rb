@@ -14,7 +14,8 @@ class User
   property :username, String
   property :email, String, format: :email_address, required: true, unique: true
   property :password_digest, String, length: 70
-  # property :password_confirmation, Text
+
+  has n, :spaces, through: Resource
 
   def password=(password)
     @password = password
@@ -29,5 +30,5 @@ class User
         nil
       end
   end
-  
+
 end

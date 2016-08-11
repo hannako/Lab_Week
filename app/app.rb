@@ -71,18 +71,21 @@ class AirBnB < Sinatra::Base
   post "/space/request" do
     # space = Space.first(id: params[:id])
     # space_name = space.name
+    space = Space.first(id: params[:id])
+    name = space.name
     day = params[:day]
     month = params[:month]
     year = params[:year]
     date = day + month + year
     # requesting = Booking.new(date: date)
-    # requesting.save
-    Request_date.create(day, month, year)
+    # requesting.savelink = Link.new(title: params[:title], url: params[:url])
+    Request_date.create(day, month, year, name)
     redirect 'users/spaces'
   end
 
   get "/space/:id" do
     space = Space.first(id: params[:id])
+    @id = params[:id]
     @space_name = space.name
     @space_description = space.description
     @space_price = space.price

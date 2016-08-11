@@ -11,19 +11,19 @@
   <body>
     <a href="/spaces/new">create a space</a>
     <!-- <link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8"> -->
+    <% if Request_date.instance %>
+    Request for <%= @request_date.name + " for " + @request_date.day + "/" + @request_date.month + "/" + @request_date.year %> has been sent
+    <% end %>
     <dl id='space'>
       <% @space.each do |space| %>
           <dt>Name: <%= space.name %><br>
-          <dd>Description:   <%= space.description   %><br>
+          <dd>Description: <%= space.description   %><br>
           <dd>Price: <%= space.price %><br>
           <!-- <input type="button" name="name" value="Book" > -->
           <a href = "/space/<%= space.id %>" >Request to Book</a>
       <% end %>
     </dl>
 
-    <% if Request_date.instance %>
-      Request for Nice Place for <%= @request_date.day + "/" + @request_date.month + "/" + @request_date.year %> has been sent
-    <% end %>
   </body>
 
 

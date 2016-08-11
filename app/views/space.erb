@@ -5,6 +5,7 @@
 $<%= @space_price %><br>
 
 <form action="/space/request" method="post">
+  <p hidden><input type="text" name="id" value="<%= @id %>"></p>
   <input type="text" name="day" placeholder="00">/
   <input type="text" name="month" placeholder="00">/
   <input type="text" name="year" placeholder="00"><br>
