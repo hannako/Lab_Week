@@ -69,14 +69,24 @@ class AirBnB < Sinatra::Base
   end
 
   post "/space/request" do
+    # space = Space.first(id: params[:id])
+    # space_name = space.name
     day = params[:day]
     month = params[:month]
     year = params[:year]
     date = day + month + year
     # requesting = Booking.new(date: date)
-    requesting.save
+    # requesting.save
     Request_date.create(day, month, year)
     redirect 'users/spaces'
+  end
+
+  get "/space/:id" do
+    space = Space.first(id: params[:id])
+    @space_name = space.name
+    @space_description = space.description
+    @space_price = space.price
+    erb :space
   end
 
   helpers do
@@ -97,13 +107,6 @@ class AirBnB < Sinatra::Base
     redirect '/users/spaces'
   end
 
-  get "/space/:id" do
-    space = Space.first(id: params[:id])
-    @space_name = space.name
-    @space_description = space.description
-    @space_price = space.price
-    erb :space
-  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

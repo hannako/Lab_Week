@@ -22,7 +22,7 @@
     </dl>
 
     <% if Request_date.instance %>
-      <% @request_date.day + "/" + @request_date.month + "/" + @request_date.year %>
+      Request for Nice Place for <%= @request_date.day + "/" + @request_date.month + "/" + @request_date.year %> has been sent
     <% end %>
   </body>
 
