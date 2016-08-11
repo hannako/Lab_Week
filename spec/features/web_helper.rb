@@ -27,3 +27,15 @@ def add_space
   fill_in :price, with: "136.50"
   click_button "Create"
 end
+
+def sign_up_2(username: 'user2', email: 'user2@gmail.com',
+  password: 'password2',
+  password_confirmation: 'password2')
+  visit '/'
+  click_button 'sign_up'
+  fill_in :username,         with: username
+  fill_in :email,            with: email
+  fill_in :password,         with: password
+  fill_in :password_confirmation, with: password_confirmation
+  click_button 'add_user'
+end

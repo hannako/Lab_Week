@@ -81,12 +81,16 @@ class AirBnB < Sinatra::Base
     redirect '/users/spaces'
   end
 
-  get "/spaces/:id" do
+  get "/space/:id" do
     space = Space.first(id: params[:id])
     @space_name = space.name
     @space_description = space.description
     @space_price = space.price
     erb :space
+  end
+
+  get "/spaces/manage" do
+    erb :manage_spaces
   end
 
 
