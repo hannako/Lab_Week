@@ -47,6 +47,7 @@ class AirBnB < Sinatra::Base
       session[:user_id] = user.id
       redirect '/users/spaces'
     else
+      flash.now[:error] = 'User already exists'
       erb :'/users/new'
     end
   end
