@@ -17,9 +17,13 @@
           <dd>Description:   <%= space.description   %><br>
           <dd>Price: <%= space.price %><br>
           <!-- <input type="button" name="name" value="Book" > -->
-          <a href = "/spaces/<%= space.id %>" >Request to Book</a>
+          <a href = "/space/<%= space.id %>" >Request to Book</a>
       <% end %>
     </dl>
+
+    <% if Request_date.instance %>
+      <% @request_date.day + "/" + @request_date.month + "/" + @request_date.year %>
+    <% end %>
   </body>
 
 
