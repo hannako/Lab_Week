@@ -18,8 +18,8 @@
   * CRC
   * Waffle
   * Learning Goals for the week
-  
 
+ 
 
 # Learning Goals:
  * Francesco (attr_readers&accessors, Spies and more Spies,)
